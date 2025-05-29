@@ -9,21 +9,25 @@ using namespace std;
 
 void solve(){
 	int n;
+	vector<int> a(1005);
 	cin >> n;
-	vector<int> a(n + 10),dp(n + 10);
 	for(int i = 1;i <= n;i ++)
-		cin >> a[i],dp[i] = 1;
-	for(int i = 2;i <= n;i ++)
 	{
-		for(int j = 1;j < i;j ++)
-		{
-			if(__gcd(a[i],a[j]) == 1)
-			{
-				dp[i] = max(dp[i],dp[j] + 1);
-			}
-		}
+		int l,r;
+		cin >> l >> r;
+		a[l] ++ ;
+		a[r + 1] --;
 	}
-	cout << dp[n] << '\n';
+
+	int ans = 0;
+	int cnt = 0;
+	for(int i = 1;i <= 1004;i ++)
+	{
+		cnt += a[i];
+		//cerr << cnt << '\n';
+		ans = max(ans,cnt);
+	}
+	cout << ans << '\n';
 }
 
 int main(){

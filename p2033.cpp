@@ -8,22 +8,24 @@ typedef long long ll;
 using namespace std;
 
 void solve(){
-	int n;
-	cin >> n;
-	vector<int> a(n + 10),dp(n + 10);
+	int n,m;
+	cin >>n >> m;
+	vector<int> a;
 	for(int i = 1;i <= n;i ++)
-		cin >> a[i],dp[i] = 1;
-	for(int i = 2;i <= n;i ++)
 	{
-		for(int j = 1;j < i;j ++)
-		{
-			if(__gcd(a[i],a[j]) == 1)
-			{
-				dp[i] = max(dp[i],dp[j] + 1);
-			}
-		}
+		int t;
+		cin >> t;
+		a.push_back(t);
 	}
-	cout << dp[n] << '\n';
+	sort(a.begin(),a.end());
+	while(m--)
+	{
+		int x;
+		cin >> x;
+		int ans = upper_bound(a.begin(),a.end(),x) - a.begin();
+		cout << ans << '\n';
+	}
+
 }
 
 int main(){
